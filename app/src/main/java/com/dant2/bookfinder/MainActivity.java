@@ -137,12 +137,12 @@ public class MainActivity extends AppCompatActivity {
             JSONObject volumeInfo = book.getJSONObject("volumeInfo");
 
             String bookAuthors = volumeInfo.getJSONArray("authors").getString(0);
-            String bookTitle = volumeInfo.getString("title");
-            String bookSubtitle = volumeInfo.getString("subtitle");
-            String bookPublisher =  volumeInfo.getString("publisher");
-            String bookPublishDate = volumeInfo.getString("publishedDate");
-            String bookDescription = volumeInfo.getString("description");
-            int bookPageCount = volumeInfo.getInt("pageCount");
+            String bookTitle = volumeInfo.optString("title", "undefined");
+            String bookSubtitle = volumeInfo.optString("subtitle", "undefined");
+            String bookPublisher =  volumeInfo.optString("publisher", "undefined");
+            String bookPublishDate = volumeInfo.optString("publishedDate", "undefined");
+            String bookDescription = volumeInfo.optString("description", "undefined");
+            int bookPageCount = volumeInfo.optInt("pageCount", -1);
 
             res.add(new Book(bookAuthors,bookTitle, bookSubtitle,bookPublisher,bookPublishDate,bookDescription,bookPageCount));
             }
